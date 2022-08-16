@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose {
+  display: flex;
+  margin-top: 15px;
+
+  width: 200px;
+  height: 100px;
+
+  background-color: transparent;
+}
+
+.choose-1 {
+  margin-right: 15px;
+}
+
+.choose-1:hover .choose-icon,
+.choose-1:focus .choose-icon,
+.choose-2:hover .choose-icon,
+.choose-2:focus .choose-icon {
+  animation: icon 300ms ease-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.choose-icon {
+  fill: black;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 15px;
+}
+
+.none {
+  display: none;
+}
+
+.player-box,
+.per-box {
+  padding-top: 5px;
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 10px;
+
+  background-color: transparent;
+}
+
+h2 {
+  margin-bottom: 15px;
+
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+
+  margin: 0 15px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 153, 1),
+    rgba(0, 212, 255, 1)
+  );
+  border-radius: 18px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+}
+
+.item {
+  flex-basis: calc(100% / 3 - 10px);
+  margin: 5px;
+
+  height: 86.66px;
+
+  background-color: transparent;
+}
+
+button {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: box-shadow 300ms ease-in;
+  opacity: 0.8;
+}
+
+button:hover,
+button:focus {
+  box-shadow: inset 8px 8px 8px -3px rgba(0, 0, 0, 0.3);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transition: fill 300ms ease-in;
+
+  transform: translate(-50%, -50%);
+  fill: transparent;
+}
+.icon1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transition: fill 300ms ease-in;
+
+  transform: translate(-50%, -50%);
+  fill: transparent;
+}
+
+.x,
+.o {
+  animation: card 300ms ease-in;
+}
+
+button.x .icon,
+button.o .icon1 {
+  fill: black;
+}
+
+.win {
+  animation: win 1000ms ease-in;
+}
+
+@keyframes card {
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes win {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes icon {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
