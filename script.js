@@ -23,6 +23,7 @@ O.onclick = function () {
 
 let playerScore = 0;
 let perScore = 0;
+let reload = 0;
 
 Score();
 
@@ -60,7 +61,7 @@ let iter = 0;
 function Per() {
   while (true) {
     let value = Math.floor(Math.random() * 9);
-    if (iter >= 4) break;
+    if (iter >= 5) break;
 
     if (
       !arrButtons[value].classList.contains("x") &&
@@ -78,6 +79,7 @@ function Per() {
       break;
     } else continue;
   }
+  Re();
 }
 
 buttons.btn.onclick = function () {
@@ -88,12 +90,12 @@ buttons.btn.onclick = function () {
     buttons.btn.classList.add("o");
     buttons.btn.disabled = true;
   }
-
   if (Winner()) {
     setTimeout(() => {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn1.onclick = function () {
   if (skin === 0) {
@@ -108,6 +110,7 @@ buttons.btn1.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn2.onclick = function () {
   if (skin === 0) {
@@ -122,6 +125,7 @@ buttons.btn2.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn3.onclick = function () {
   if (skin === 0) {
@@ -136,6 +140,7 @@ buttons.btn3.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn4.onclick = function () {
   if (skin === 0) {
@@ -150,6 +155,7 @@ buttons.btn4.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn5.onclick = function () {
   if (skin === 0) {
@@ -164,6 +170,7 @@ buttons.btn5.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn6.onclick = function () {
   if (skin === 0) {
@@ -178,6 +185,7 @@ buttons.btn6.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn7.onclick = function () {
   if (skin === 0) {
@@ -192,6 +200,7 @@ buttons.btn7.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 buttons.btn8.onclick = function () {
   if (skin === 0) {
@@ -206,6 +215,7 @@ buttons.btn8.onclick = function () {
       Per();
     }, 300);
   }
+  Re();
 };
 
 function Winner() {
@@ -463,4 +473,16 @@ function Reload() {
     i.classList.remove("o");
   }
   iter = 0;
+}
+
+function Re() {
+  for (i of arrButtons) {
+    if (i.classList.contains("x") || i.classList.contains("o")) reload++;
+  }
+  if (reload >= 9) {
+    reload = 0;
+    Reload();
+  } else {
+    reload = 0;
+  }
 }
