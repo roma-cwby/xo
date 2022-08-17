@@ -1,6 +1,6 @@
 const playerName = prompt("Enter name");
-let name = document.querySelector(".player-name");
-name.innerHTML = playerName;
+let Name = document.querySelector(".player-name");
+playerName ? (Name.innerHTML = playerName) : (Name.innerHTML = "Player");
 
 let skin = 0;
 
