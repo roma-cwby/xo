@@ -59,30 +59,36 @@ const arrButtons = Object.values(buttons);
 let iter = 0;
 
 function Per() {
-  while (true) {
-    let value = Math.floor(Math.random() * 9);
-    if (iter >= 5) break;
+  reload++;
+  setTimeout(() => {
+    console.log("Per");
 
-    if (
-      !arrButtons[value].classList.contains("x") &&
-      !arrButtons[value].classList.contains("o")
-    ) {
-      if (skin === 0) {
-        arrButtons[value].classList.add("o");
-        arrButtons[value].disabled = true;
-      } else {
-        arrButtons[value].classList.add("x");
-        arrButtons[value].disabled = true;
-      }
-      Winner();
-      iter++;
-      break;
-    } else continue;
-  }
-  Re();
+    while (true) {
+      let value = Math.floor(Math.random() * 9);
+      if (iter >= 5) return;
+
+      if (
+        !arrButtons[value].classList.contains("x") &&
+        !arrButtons[value].classList.contains("o")
+      ) {
+        if (skin === 0) {
+          arrButtons[value].classList.add("o");
+          arrButtons[value].disabled = true;
+        } else {
+          arrButtons[value].classList.add("x");
+          arrButtons[value].disabled = true;
+        }
+        Winner(0);
+        iter++;
+        break;
+      } else continue;
+    }
+  }, 300);
 }
 
 buttons.btn.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn.classList.add("x");
     buttons.btn.disabled = true;
@@ -90,14 +96,15 @@ buttons.btn.onclick = function () {
     buttons.btn.classList.add("o");
     buttons.btn.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn1.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn1.classList.add("x");
     buttons.btn1.disabled = true;
@@ -105,14 +112,15 @@ buttons.btn1.onclick = function () {
     buttons.btn1.classList.add("o");
     buttons.btn1.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn2.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn2.classList.add("x");
     buttons.btn2.disabled = true;
@@ -120,14 +128,15 @@ buttons.btn2.onclick = function () {
     buttons.btn2.classList.add("o");
     buttons.btn2.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn3.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn3.classList.add("x");
     buttons.btn3.disabled = true;
@@ -135,14 +144,15 @@ buttons.btn3.onclick = function () {
     buttons.btn3.classList.add("o");
     buttons.btn3.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn4.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn4.classList.add("x");
     buttons.btn4.disabled = true;
@@ -150,14 +160,15 @@ buttons.btn4.onclick = function () {
     buttons.btn4.classList.add("o");
     buttons.btn4.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn5.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn5.classList.add("x");
     buttons.btn5.disabled = true;
@@ -165,14 +176,15 @@ buttons.btn5.onclick = function () {
     buttons.btn5.classList.add("o");
     buttons.btn5.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn6.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn6.classList.add("x");
     buttons.btn6.disabled = true;
@@ -180,14 +192,15 @@ buttons.btn6.onclick = function () {
     buttons.btn6.classList.add("o");
     buttons.btn6.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn7.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn7.classList.add("x");
     buttons.btn7.disabled = true;
@@ -195,14 +208,15 @@ buttons.btn7.onclick = function () {
     buttons.btn7.classList.add("o");
     buttons.btn7.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 buttons.btn8.onclick = function () {
+  reload++;
+
   if (skin === 0) {
     buttons.btn8.classList.add("x");
     buttons.btn8.disabled = true;
@@ -210,15 +224,15 @@ buttons.btn8.onclick = function () {
     buttons.btn8.classList.add("o");
     buttons.btn8.disabled = true;
   }
-  if (Winner()) {
-    setTimeout(() => {
-      Per();
-    }, 300);
+  Winner(1);
+  if (reload > 8) {
+    Reload();
+    return;
   }
-  Re();
 };
 
-function Winner() {
+function Winner(value) {
+  console.log("Winner");
   if (
     (buttons.btn.classList.contains("x") &&
       buttons.btn1.classList.contains("x") &&
@@ -246,9 +260,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn3.classList.contains("x") &&
@@ -276,9 +288,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn6.classList.contains("x") &&
@@ -306,9 +316,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn.classList.contains("x") &&
@@ -336,9 +344,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn1.classList.contains("x") &&
@@ -366,9 +372,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn2.classList.contains("x") &&
@@ -396,9 +400,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn.classList.contains("x") &&
@@ -426,9 +428,7 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
   } else if (
     (buttons.btn2.classList.contains("x") &&
@@ -456,33 +456,25 @@ function Winner() {
       perScore++;
 
     Score();
-    setTimeout(() => {
-      Reload();
-    }, 1000);
+    Reload();
     return false;
+  } else {
+    if (value === 1 && reload < 9) Per();
+    return true;
   }
-
-  return true;
 }
 
 function Reload() {
-  for (i of arrButtons) {
-    i.disabled = false;
-    i.classList.remove("win");
-    i.classList.remove("x");
-    i.classList.remove("o");
-  }
-  iter = 0;
-}
+  setTimeout(() => {
+    console.log("Reload");
 
-function Re() {
-  for (i of arrButtons) {
-    if (i.classList.contains("x") || i.classList.contains("o")) reload++;
-  }
-  if (reload >= 9) {
+    for (i of arrButtons) {
+      i.disabled = false;
+      i.classList.remove("win");
+      i.classList.remove("x");
+      i.classList.remove("o");
+    }
+    iter = 0;
     reload = 0;
-    Reload();
-  } else {
-    reload = 0;
-  }
+  }, 1000);
 }
