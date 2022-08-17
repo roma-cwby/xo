@@ -46,14 +46,6 @@ const buttons = {
   btn8: document.querySelector(".button8"),
 };
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
 const arrButtons = Object.values(buttons);
 
 let iter = 0;
